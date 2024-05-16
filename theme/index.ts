@@ -8,7 +8,7 @@ export const COLORS = {
   yellow: "#F5C51B",
   gold: "#FFA901",
 
-  primary: "#AE0057",
+  primary: "#000462",
   primaryLight: "#F9BBE7",
   primaryDark: "#650032",
 
@@ -17,7 +17,7 @@ export const COLORS = {
 
   tertiary: "#F5C51B",
   lightGray: "#E9E9E9",
-  gray: "gray", // '#B4B4B4
+  gray: "#C8C8C8", // '#B4B4B4
   darkGray: "#B4B4B4",
 };
 
@@ -33,31 +33,37 @@ export const SIZES = {
 export const TYPOGRAPHY = StyleSheet.create({
   h1: {
     color: COLORS.black,
-    fontFamily: "outfit-xl",
+    fontFamily: "asul-bold",
     fontWeight: "900",
-    fontSize: SIZES.xl,
+    fontSize: SIZES.lg,
   },
   h2: {
     color: COLORS.black,
-    fontFamily: "outfit-lg",
+    fontFamily: "asul-bold",
     fontWeight: "700",
-    fontSize: SIZES.lg,
+    fontSize: SIZES.md,
   },
   h3: {
     color: COLORS.black,
-    fontFamily: "outfit-md",
+    fontFamily: "asul-regular",
     fontWeight: "500",
     fontSize: SIZES.md,
   },
   h4: {
     color: COLORS.black,
-    fontFamily: "outfit-sm",
+    fontFamily: "inter-md",
+    fontWeight: "500",
+    fontSize: SIZES.sm,
+  },
+  h5: {
+    color: COLORS.black,
+    fontFamily: "inter-sm",
     fontWeight: "400",
     fontSize: SIZES.sm,
   },
   p: {
     color: COLORS.black,
-    fontFamily: "outfit-xs",
+    fontFamily: "inter-xs",
     fontWeight: "400",
     fontSize: SIZES.sm,
   },

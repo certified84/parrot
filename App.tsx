@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { customFontLocation } from "./constants";
+import { useFonts } from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
+import NavigationRoutes from "./navigation";
+import { Dashboard, HomeScreen } from "./screens";
 
 export default function App() {
+  // FONT CONFIG
+  const [fontsLoaded] = useFonts(customFontLocation);
+  if (!fontsLoaded) return null;
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <NavigationRoutes />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
