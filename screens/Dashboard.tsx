@@ -3,19 +3,20 @@ import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { COLORS, SIZES } from "../theme";
 import { useTheme } from "react-native-paper";
-import HomeScreen from "./HomeScreen";
+import HomeScreen from "./Home";
 import NavigationIcon from "../components/NavigationIcon";
 import HomeIcon from "../assets/svg/navigation/Home";
 import SearchIcon from "../assets/svg/navigation/Search";
 import ReviewIcon from "../assets/svg/navigation/Review";
 import OfferIcon from "../assets/svg/navigation/Offer";
 import ProfileIcon from "../assets/svg/navigation/Profile";
+import SearchScreen from "./Search";
 
 const Tab = createMaterialBottomTabNavigator();
 
 const Dashboard = () => {
   // REMOVE WEIRD TAB NAVIGATION COLOR
-  const theme = useTheme();
+  // const theme = useTheme();
   // theme.colors.secondaryContainer = "transparent";
 
   return (
@@ -23,6 +24,7 @@ const Dashboard = () => {
       <Tab.Navigator
         // initialRouteName="HomeScreen"
         activeColor={COLORS.primary}
+        activeIndicatorStyle={{ backgroundColor: "transparent" }}
         inactiveColor={COLORS.gray}
         barStyle={styles.navigatorTabBar}
         shifting={false}
@@ -48,7 +50,7 @@ const Dashboard = () => {
 
         <Tab.Screen
           name="SearchScreen"
-          component={HomeScreen}
+          component={SearchScreen}
           options={{
             tabBarLabel: "",
             tabBarIcon: ({ color, focused }) => (
@@ -124,7 +126,7 @@ const styles = StyleSheet.create({
   },
   navigatorTabBar: {
     backgroundColor: COLORS.white,
-    paddingBottom: StatusBar.currentHeight ?? SIZES.md
+    // paddingBottom: StatusBar.currentHeight ?? SIZES.md
   },
   tabBarIcon: {
     minWidth: 55,

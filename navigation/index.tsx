@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { COLORS } from "../theme";
-import { Dashboard, NotificationsScreen } from "../screens";
+import { Dashboard, NotificationsScreen, SearchScreen } from "../screens";
 
 const Stack = createStackNavigator();
 
@@ -28,6 +28,7 @@ const index = () => {
         name="NotificationsScreen"
         component={NotificationsScreen}
       />
+      <Stack.Screen name="SearchScreen" component={SearchScreen} />
     </Stack.Navigator>
   );
 };

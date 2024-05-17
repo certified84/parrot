@@ -44,16 +44,6 @@ type Props = {
   navigation?: NavProp;
 };
 
-interface IValueProps {
-  searchText: string;
-  search: boolean;
-  specialOffers: number[];
-  currentSpecialOffer: number;
-  categories: Category[];
-  selected: string;
-  bookmarks: string[];
-}
-
 const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
   const { width, height } = useWindowDimensions();
 
@@ -101,7 +91,11 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.searchContainer} activeOpacity={0.9}>
+        <TouchableOpacity
+          style={styles.searchContainer}
+          activeOpacity={0.9}
+          onPress={() => navigation?.navigate("SearchScreen")}
+        >
           <Text style={{ ...TYPOGRAPHY.p, color: "#B0B0B0" }}>
             e.g. Amala Skot, Restaurant, Hotels
           </Text>
@@ -230,7 +224,12 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
         </View>
 
         {businesses.map((item, index) => (
-          <BusinessComponent key={index} canRate={false} item={item} width={width} />
+          <BusinessComponent
+            key={index}
+            canRate={false}
+            item={item}
+            width={width}
+          />
         ))}
       </ScrollView>
     </SafeAreaView>

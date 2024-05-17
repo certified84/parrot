@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   iconBadge: {
-    fontFamily: "outfit-md",
+    fontFamily: "inter-md",
     fontSize: SIZES.xxs,
     position: "absolute",
     top: "10%",
