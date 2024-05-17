@@ -24,13 +24,13 @@ const Header: React.FC<Props> = ({
   headerRight,
 }) => (
   <View style={styles.container}>
-    {showBack && (
-      <Ionicons
-        size={SIZES.md + 4}
-        name={Platform.OS === "android" ? "arrow-back" : "chevron-back"}
-        onPress={() => navigation?.goBack()}
-      />
-    )}
+    <Ionicons
+      size={SIZES.md + 4}
+      disabled={!showBack}
+      style={{ opacity: showBack ? 1 : 0 }}
+      name={Platform.OS === "android" ? "arrow-back" : "chevron-back"}
+      onPress={() => navigation?.goBack()}
+    />
     <Text style={{ ...TYPOGRAPHY.h2, marginEnd: SIZES.md + 4 }}>{title}</Text>
     <View>{headerRight}</View>
   </View>

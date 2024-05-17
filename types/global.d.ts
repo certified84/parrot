@@ -12,7 +12,9 @@ declare global {
     SearchScreen;
     NotificationsScreen;
     ProfileScreen;
-    
+    ReviewsScreen;
+    OffersScreen;
+
     BookmarksScreen: { bookmarks: string[] };
     ServicesScreen: { category?: Category; bookmarks?: string[] };
     CategoryiesScreen: { bookmarks: string[] };
