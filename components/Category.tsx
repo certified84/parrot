@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
     fontFamily: "outfit-md",
     fontSize: SIZES.xxs,
     position: "absolute",
-    top: -5,
-    left: "58%",
+    top: "10%",
+    left: "90%",
   },
 });
 

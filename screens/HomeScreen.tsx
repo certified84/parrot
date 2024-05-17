@@ -10,8 +10,10 @@ import {
   Dimensions,
   SafeAreaView,
   Image,
+  ImageBackground,
+  useWindowDimensions,
 } from "react-native";
-import { Avatar, TextInput } from "react-native-paper";
+import { Avatar, FAB, TextInput } from "react-native-paper";
 import { COLORS, SIZES, TYPOGRAPHY } from "../theme";
 import {
   RouteProp,
@@ -29,6 +31,7 @@ import CarIcon from "../assets/svg/categories/Car";
 import TechnologyIcon from "../assets/svg/categories/Technology";
 import TravelIcon from "../assets/svg/categories/Travel";
 import EntertainmentIcon from "../assets/svg/categories/Entertainment";
+import EditIcon from "../assets/svg/Edit";
 
 type ScreenRouteProp = RouteProp<StackParamList, "HomeScreen">;
 type NavProp = NavigationProp<StackParamList, "HomeScreen">;
@@ -50,26 +53,11 @@ interface IValueProps {
 }
 
 const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
-  const [values, setValues] = useState<IValueProps>({
-    searchText: "",
-    search: false,
-    specialOffers: [1, 2, 3, 4, 5],
-    currentSpecialOffer: 0,
-    categories: [
-      {
-        id: "-1",
-        title: "All",
-        type: "all",
-      },
-      ...categories,
-    ],
-    selected: "all",
-    bookmarks: [],
-    recommendedServices: [],
-  });
+  const { width, height } = useWindowDimensions();
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000462" }}>
+      <ReviewFab />
       <View style={{ padding: SIZES.md }}>
         <View style={styles.headerContainer}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -117,7 +105,6 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-
       <ScrollView
         style={{
           flex: 1,
@@ -138,14 +125,10 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
               borderBottomEndRadius: 0,
               borderBottomStartRadius: 0,
             }}
+            badge="New"
             text="Restaurant"
             icon={<ResturantIcon />}
-            onPress={() =>
-              navigation?.navigate("ServicesScreen", {
-                bookmarks: values.bookmarks,
-                category: categories.find((item) => item.type === "cleaning"),
-              })
-            }
+            onPress={() => {}}
           />
 
           <Category
@@ -155,12 +138,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
             }}
             text="Fashion"
             icon={<FashionIcon />}
-            onPress={() =>
-              navigation?.navigate("ServicesScreen", {
-                bookmarks: values.bookmarks,
-                category: categories.find((item) => item.type === "cleaning"),
-              })
-            }
+            onPress={() => {}}
           />
 
           <Category
@@ -170,12 +148,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
             }}
             text="Auto"
             icon={<CarIcon />}
-            onPress={() =>
-              navigation?.navigate("ServicesScreen", {
-                bookmarks: values.bookmarks,
-                category: categories.find((item) => item.type === "cleaning"),
-              })
-            }
+            onPress={() => {}}
           />
         </View>
 
@@ -187,12 +160,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
             }}
             text="Technology"
             icon={<TechnologyIcon />}
-            onPress={() =>
-              navigation?.navigate("ServicesScreen", {
-                bookmarks: values.bookmarks,
-                category: categories.find((item) => item.type === "cleaning"),
-              })
-            }
+            onPress={() => {}}
           />
 
           <Category
@@ -200,14 +168,10 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
               borderTopEndRadius: 0,
               borderTopStartRadius: 0,
             }}
+            badge="New"
             text="Travel"
             icon={<TravelIcon />}
-            onPress={() =>
-              navigation?.navigate("ServicesScreen", {
-                bookmarks: values.bookmarks,
-                category: categories.find((item) => item.type === "cleaning"),
-              })
-            }
+            onPress={() => {}}
           />
 
           <Category
@@ -217,12 +181,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
             }}
             text="Entertainment"
             icon={<EntertainmentIcon />}
-            onPress={() =>
-              navigation?.navigate("ServicesScreen", {
-                bookmarks: values.bookmarks,
-                category: categories.find((item) => item.type === "cleaning"),
-              })
-            }
+            onPress={() => {}}
           />
         </View>
 
@@ -233,6 +192,34 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
           </TouchableOpacity>
         </View>
 
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={[
+            "https://source.unsplash.com/random/?man,resturant",
+            "https://source.unsplash.com/random/?woman,fashion",
+            "https://source.unsplash.com/random/?man,computer",
+          ]}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={{
+                borderRadius: SIZES.xxs,
+                overflow: "hidden",
+                marginEnd: SIZES.xs,
+              }}
+              activeOpacity={0.8}
+            >
+              <Image
+                source={{
+                  uri: item,
+                }}
+                width={width * 0.65}
+                height={140}
+              />
+            </TouchableOpacity>
+          )}
+        />
+
         <View style={styles.seeAllContainer}>
           <Text style={TYPOGRAPHY.h2}>Businesses from your location</Text>
           <TouchableOpacity activeOpacity={0.5} style={{ padding: 4 }}>
@@ -241,6 +228,22 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
         </View>
       </ScrollView>
     </SafeAreaView>
+  );
+};
+
+interface IReviewFabProps {
+  onPress?: () => void;
+}
+
+const ReviewFab: React.FC<IReviewFabProps> = ({ onPress }) => {
+  return (
+    <View style={styles.fabBtnStyle}>
+      <FAB
+        style={{ backgroundColor: "#FF6B1E" }}
+        icon={() => <EditIcon />}
+        onPress={onPress}
+      />
+    </View>
   );
 };
 
@@ -280,56 +283,20 @@ const styles = StyleSheet.create({
     height: 45,
     marginTop: 38,
   },
-  locationContainer: {
-    flex: 0.82,
-    flexDirection: "row",
-    backgroundColor: "#FAFAFA",
-    borderRadius: SIZES.xs,
-    borderColor: "#E7E8EA",
-    borderWidth: 1,
-    height: 50,
-    alignItems: "center",
-    paddingHorizontal: SIZES.xxs,
-  },
-  locatorContainer: {
-    flex: 0.16,
-    flexDirection: "row",
-    backgroundColor: "#FAFAFA",
-    borderRadius: SIZES.xs,
-    borderColor: "#E7E8EA",
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: SIZES.xxs,
-    borderWidth: 1,
-  },
   seeAllContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginVertical: SIZES.md,
   },
-  specialOfferContainer: {
-    borderRadius: 30,
-    backgroundColor: "black",
-    overflow: "hidden",
-  },
-  indicatorContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "absolute",
-    bottom: SIZES.sm,
-    left: 0,
-    right: 0,
-  },
-  textInputField: {
-    backgroundColor: "#F5F5F5",
-    color: COLORS.black,
-    marginBottom: SIZES.sm,
-  },
   iconsRow: {
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  fabBtnStyle: {
+    position: "absolute",
+    right: 10,
+    bottom: SIZES.lg,
+    zIndex: 1,
   },
 });

@@ -24,22 +24,13 @@ declare global {
     type: string;
   }
 
-  interface Service {
+  interface IBusiness {
     id: string;
-    title: string;
-    desc: string;
-    images: string[];
-    reviewCount: number;
+    name: string;
+    verified: boolean;
     rating: number;
-    price: number;
-    type:
-      | "cleaning"
-      | "repair"
-      | "painting"
-      | "laundry"
-      | "appliance"
-      | "plumbing"
-      | "movers"
-      | "shaving";
+    reviewCount: number;
+    businessType: string;
+    image: string;
   }
 }
