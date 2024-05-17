@@ -20,8 +20,9 @@ const NavigationIcon: React.FC<NavigationIconProps> = ({
     <Text
       style={{
         fontSize: SIZES.xs,
-        fontFamily: focused ? "inter-md" : "inter-xxs",
+        color: color,
         textAlign: "center",
+        fontFamily: focused ? "inter-md" : "inter-xs",
       }}
     >
       {text}
@@ -34,12 +35,6 @@ const styles = StyleSheet.create({
     minWidth: 55,
     alignItems: "center",
     justifyContent: "space-between",
-  },
-  indicator: {
-    width: SIZES.xxs,
-    height: SIZES.xxs,
-    borderRadius: SIZES.xxs,
-    marginVertical: 4,
   },
 });
 
