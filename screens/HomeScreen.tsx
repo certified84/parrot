@@ -20,18 +20,21 @@ import {
   NavigationProp,
   useIsFocused,
 } from "@react-navigation/native";
-import { categories, services } from "../store/dummy";
 import { formatGreeting, getRandomSubset } from "../constants/util";
 import { Ionicons } from "@expo/vector-icons";
 import Bell from "../assets/svg/Bell";
 import Category from "../components/Category";
-import ResturantIcon from "../assets/svg/categories/Resturant";
+import RestaurantIcon from "../assets/svg/categories/Restaurant";
 import FashionIcon from "../assets/svg/categories/Fashion";
 import CarIcon from "../assets/svg/categories/Car";
 import TechnologyIcon from "../assets/svg/categories/Technology";
 import TravelIcon from "../assets/svg/categories/Travel";
 import EntertainmentIcon from "../assets/svg/categories/Entertainment";
 import EditIcon from "../assets/svg/Edit";
+import VerifiedIcon from "../assets/svg/Verified";
+import RatingBar from "../components/RatingBar";
+import { businesses } from "../store/dummy";
+import BusinessComponent from "../components/Business";
 
 type ScreenRouteProp = RouteProp<StackParamList, "HomeScreen">;
 type NavProp = NavigationProp<StackParamList, "HomeScreen">;
@@ -49,7 +52,6 @@ interface IValueProps {
   categories: Category[];
   selected: string;
   bookmarks: string[];
-  recommendedServices: Service[];
 }
 
 const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
@@ -127,7 +129,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
             }}
             badge="New"
             text="Restaurant"
-            icon={<ResturantIcon />}
+            icon={<RestaurantIcon />}
             onPress={() => {}}
           />
 
@@ -196,7 +198,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
           horizontal
           showsHorizontalScrollIndicator={false}
           data={[
-            "https://source.unsplash.com/random/?man,resturant",
+            "https://source.unsplash.com/random/?man,restaurant",
             "https://source.unsplash.com/random/?woman,fashion",
             "https://source.unsplash.com/random/?man,computer",
           ]}
@@ -226,6 +228,10 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
             <Text style={TYPOGRAPHY.h5}>View All</Text>
           </TouchableOpacity>
         </View>
+
+        {businesses.map((item, index) => (
+          <BusinessComponent key={index} canRate={false} item={item} width={width} />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
@@ -280,7 +286,6 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.xs,
     borderWidth: 1,
     borderColor: "#B0B0B0",
-    height: 45,
     marginTop: 38,
   },
   seeAllContainer: {

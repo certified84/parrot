@@ -7,7 +7,7 @@ import Svg, {
   Use,
   Image,
 } from "react-native-svg";
-const ResturantIcon = (props: SvgProps) => (
+const RestaurantIcon = (props: SvgProps) => (
   <Svg width={24} height={24} fill="none" {...props}>
     <Path fill="url(#a)" d="M.5 0h25v25H.5z" />
     <Defs>
@@ -28,4 +28,4 @@ const ResturantIcon = (props: SvgProps) => (
     </Defs>
   </Svg>
 );
-export default ResturantIcon;
+export default RestaurantIcon;

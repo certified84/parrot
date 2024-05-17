@@ -124,16 +124,11 @@ const styles = StyleSheet.create({
   },
   navigatorTabBar: {
     backgroundColor: COLORS.white,
+    paddingBottom: StatusBar.currentHeight ?? SIZES.md
   },
   tabBarIcon: {
     minWidth: 55,
     alignItems: "center",
     justifyContent: "space-between",
-  },
-  indicator: {
-    width: SIZES.xxs,
-    height: SIZES.xxs,
-    borderRadius: SIZES.xxs,
-    marginVertical: 4,
   },
 });
