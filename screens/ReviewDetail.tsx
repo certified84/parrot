@@ -159,7 +159,7 @@ const ReviewDetailScreen: React.FC<Props> = ({ route, navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <View style={{ height: 1, backgroundColor: "black", opacity: 0.2 }} />
+        <View style={{ height: 1, backgroundColor: "#E9E9E9" }} />
 
         <Text
           style={{

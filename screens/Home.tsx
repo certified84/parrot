@@ -51,7 +51,10 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000462" }}>
       <ReviewFab />
 
-      <View style={{ padding: SIZES.md }}>
+      <ImageBackground
+        style={{ padding: SIZES.md }}
+        source={require("../assets/images/home_header_bg.png")}
+      >
         <View style={styles.headerContainer}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <TouchableOpacity
@@ -101,7 +104,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
             e.g. Amala Skot, Restaurant, Hotels
           </Text>
         </TouchableOpacity>
-      </View>
+      </ImageBackground>
 
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.seeAllContainer}>

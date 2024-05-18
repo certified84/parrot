@@ -15,7 +15,7 @@ const CommentCard: React.FC<Props> = ({}) => {
         size={35}
         source={{ uri: "https://source.unsplash.com/random/?man,bmw" }}
       />
-      <View style={{ marginStart: SIZES.xxs }}>
+      <View style={{flex: 1, marginStart: SIZES.xxs }}>
         <Text style={TYPOGRAPHY.h4}>Grace</Text>
         <Text style={{ ...TYPOGRAPHY.p, marginTop: 4 }}>@Omolope (2h ago)</Text>
         <Text style={{ ...TYPOGRAPHY.p, flex: 1, marginVertical: SIZES.xxs }}>
@@ -114,11 +114,12 @@ const SubComment: React.FC<Props> = ({}) => {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    flexDirection: "row",
     borderTopWidth: 1,
     borderTopColor: "#E9E9E9",
     paddingVertical: SIZES.sm,
     marginBottom: SIZES.xs,
-    flexDirection: "row",
   },
   subCommentContainer: {
     borderTopWidth: 1,

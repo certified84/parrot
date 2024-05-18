@@ -50,7 +50,7 @@ type Props = {
 const BusinessInfoScreen: React.FC<Props> = ({ route, navigation }) => {
   const { width, height } = useWindowDimensions();
   const business = route?.params?.business;
-  const [rating, setRating] = useState(business?.rating ?? 0);
+  const [rating, setRating] = useState(0);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -80,9 +80,13 @@ const BusinessInfoScreen: React.FC<Props> = ({ route, navigation }) => {
         </View>
 
         <View style={styles.ratingContainer}>
-          <RatingBar canRate={false} rating={rating} onRate={setRating} />
+          <RatingBar
+            canRate={false}
+            rating={business?.rating ?? 0}
+            onRate={() => {}}
+          />
           <Text style={{ ...TYPOGRAPHY.h3, marginHorizontal: SIZES.xs }}>
-            {rating}
+            {business?.rating ?? 0}
           </Text>
           <Text style={{ ...TYPOGRAPHY.h5 }}>{`(${
             business?.reviewCount ?? 0
@@ -93,11 +97,37 @@ const BusinessInfoScreen: React.FC<Props> = ({ route, navigation }) => {
           {business?.info}
         </Text>
 
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            marginVertical: SIZES.sm,
+          }}
+        >
+          <Text style={TYPOGRAPHY.h3}>{"Rate this bussiness"}</Text>
+          <Text
+            style={{
+              ...TYPOGRAPHY.p,
+              textAlign: "center",
+              marginVertical: SIZES.xs,
+            }}
+          >
+            {"Have you visited this business before? How was your experience"}
+          </Text>
+          <RatingBar rating={rating} canRate onRate={setRating} />
+        </View>
+
         <Text style={TYPOGRAPHY.h3}>{"Reviews"}</Text>
 
         <View style={{ marginVertical: SIZES.sm }}>
           {reviews.map((review) => (
-            <ReviewCard key={review.id} navigation={navigation} review={review} business={business} width={width} />
+            <ReviewCard
+              key={review.id}
+              navigation={navigation}
+              review={review}
+              business={business}
+              width={width}
+            />
           ))}
         </View>
       </ScrollView>

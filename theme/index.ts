@@ -47,7 +47,7 @@ export const TYPOGRAPHY = StyleSheet.create({
     color: COLORS.black,
     fontFamily: "asul-regular",
     fontWeight: "500",
-    fontSize: SIZES.md,
+    fontSize: SIZES.sm,
   },
   h4: {
     color: COLORS.black,
@@ -59,13 +59,13 @@ export const TYPOGRAPHY = StyleSheet.create({
     color: COLORS.black,
     fontFamily: "inter-sm",
     fontWeight: "400",
-    fontSize: SIZES.sm,
+    fontSize: SIZES.sm - 2,
   },
   p: {
     color: COLORS.black,
     fontFamily: "inter-xs",
     fontWeight: "400",
-    fontSize: SIZES.sm - 2,
+    fontSize: SIZES.xs,
   },
 });
 
