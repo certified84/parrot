@@ -54,7 +54,7 @@ const reviews: IReview[] = [
     rating: 5,
     review:
       "Thank you so much for choosing to dine with us and for taking the time to share your positive experience! We're delighted to hear that you and your family had a wonderful dinner at our restaurant.",
-    profileImage: "string",
+    profileImage: "https://source.unsplash.com/random/?man,bmw",
     images: [
       "https://source.unsplash.com/random/?man,burger",
       "https://source.unsplash.com/random/?man,pizza",

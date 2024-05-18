@@ -161,7 +161,11 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
 
         <View style={styles.seeAllContainer}>
           <Text style={TYPOGRAPHY.h2}>Offers for you</Text>
-          <TouchableOpacity activeOpacity={0.5} style={{ padding: 4 }}>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => navigation?.navigate("OffersScreen")}
+            style={{ padding: 4 }}
+          >
             <Text style={TYPOGRAPHY.h5}>View All</Text>
           </TouchableOpacity>
         </View>

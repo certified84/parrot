@@ -14,7 +14,7 @@ type Props = {
   title: string;
   showBack?: boolean;
   showOptions?: boolean;
-  headerRight?: ReactNode;
+  headerRight?: React.JSX.Element;
 };
 
 const Header: React.FC<Props> = ({
@@ -31,8 +31,10 @@ const Header: React.FC<Props> = ({
       name={Platform.OS === "android" ? "arrow-back" : "chevron-back"}
       onPress={() => navigation?.goBack()}
     />
-    <Text style={{ ...TYPOGRAPHY.h2, marginEnd: SIZES.md + 4 }}>{title}</Text>
-    <View>{headerRight}</View>
+    {/* <View style={{position: 'absolute', left: 0, right: 0}}> */}
+    <Text style={TYPOGRAPHY.h2}>{title}</Text>
+    {/* </View> */}
+    <View style={{}}>{headerRight}</View>
   </View>
 );
 

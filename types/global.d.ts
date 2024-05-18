@@ -15,7 +15,7 @@ declare global {
     ReviewsScreen;
     OffersScreen;
     BusinessInfoScreen: { business: IBusiness };
-    ReviewScreen: { review: IReview };
+    ReviewDetailScreen: { review: IReview, business?: IBusiness };
 
     BookmarksScreen: { bookmarks: string[] };
     ServicesScreen: { category?: Category; bookmarks?: string[] };

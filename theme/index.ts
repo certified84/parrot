@@ -65,7 +65,7 @@ export const TYPOGRAPHY = StyleSheet.create({
     color: COLORS.black,
     fontFamily: "inter-xs",
     fontWeight: "400",
-    fontSize: SIZES.sm,
+    fontSize: SIZES.sm - 2,
   },
 });
 

@@ -3,6 +3,7 @@ import HomeScreen from "./Home";
 import NotificationsScreen from "./Notifications";
 import SearchScreen from "./Search";
 import BusinessInfoScreen from "./BusinessInfo";
+import OffersScreen from "./Offers";
 
 export {
   Dashboard,
@@ -10,4 +11,5 @@ export {
   NotificationsScreen,
   SearchScreen,
   BusinessInfoScreen,
+  OffersScreen,
 };

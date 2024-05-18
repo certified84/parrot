@@ -97,7 +97,7 @@ const BusinessInfoScreen: React.FC<Props> = ({ route, navigation }) => {
 
         <View style={{ marginVertical: SIZES.sm }}>
           {reviews.map((review) => (
-            <ReviewCard key={review.id} navigation={navigation} review={review} width={width} />
+            <ReviewCard key={review.id} navigation={navigation} review={review} business={business} width={width} />
           ))}
         </View>
       </ScrollView>

@@ -4,8 +4,10 @@ import {
   BusinessInfoScreen,
   Dashboard,
   NotificationsScreen,
+  OffersScreen,
   SearchScreen,
 } from "../screens";
+import ReviewDetailScreen from "../screens/ReviewDetail";
 
 const Stack = createStackNavigator();
 
@@ -35,6 +37,8 @@ const index = () => {
       />
       <Stack.Screen name="SearchScreen" component={SearchScreen} />
       <Stack.Screen name="BusinessInfoScreen" component={BusinessInfoScreen} />
+      <Stack.Screen name="OffersScreen" component={OffersScreen} />
+      <Stack.Screen name="ReviewDetailScreen" component={ReviewDetailScreen} />
     </Stack.Navigator>
   );
 };

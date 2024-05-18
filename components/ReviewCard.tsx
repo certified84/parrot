@@ -31,14 +31,26 @@ type NavProp = NavigationProp<StackParamList>;
 interface Props {
   navigation?: NavProp;
   review: IReview;
+  business?: IBusiness;
   width: number;
 }
 
-const ReviewCard: React.FC<Props> = ({ review, navigation, width }) => {
+const ReviewCard: React.FC<Props> = ({
+  review,
+  business,
+  navigation,
+  width,
+}) => {
   const scale = useRef(new Animated.Value(1)).current;
   return (
     <RNAnimated appearFrom="top" animationDuration={700}>
-      <TouchableOpacity style={styles.wrapper} activeOpacity={0.9}>
+      <TouchableOpacity
+        style={styles.wrapper}
+        activeOpacity={0.9}
+        onPress={() =>
+          navigation?.navigate("ReviewDetailScreen", { review, business })
+        }
+      >
         <View style={styles.newsletterContainer}>
           <TouchableOpacity activeOpacity={0.5}>
             <Avatar.Image size={55} source={{ uri: review.profileImage }} />
@@ -98,22 +110,30 @@ const ReviewCard: React.FC<Props> = ({ review, navigation, width }) => {
         </View>
 
         <View style={styles.bottomSection}>
-          <TouchableOpacity style={{ flexDirection: "row", alignItems: "center" }}>
+          <TouchableOpacity
+            style={{ flexDirection: "row", alignItems: "center" }}
+          >
             <LikeIcon />
             <Text style={TYPOGRAPHY.p}>{review.likes}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={{ flexDirection: "row", alignItems: "center" }}>
+          <TouchableOpacity
+            style={{ flexDirection: "row", alignItems: "center" }}
+          >
             <DislikeIcon />
             <Text style={TYPOGRAPHY.p}>{review.dislikes}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={{ flexDirection: "row", alignItems: "center" }}>
+          <TouchableOpacity
+            style={{ flexDirection: "row", alignItems: "center" }}
+          >
             <CommentIcon />
             <Text style={TYPOGRAPHY.p}>{review.comments}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={{ flexDirection: "row", alignItems: "center" }}>
+          <TouchableOpacity
+            style={{ flexDirection: "row", alignItems: "center" }}
+          >
             <ShareIcon />
           </TouchableOpacity>
         </View>
