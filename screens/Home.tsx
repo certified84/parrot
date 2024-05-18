@@ -50,6 +50,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#000462" }}>
       <ReviewFab />
+
       <View style={{ padding: SIZES.md }}>
         <View style={styles.headerContainer}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -101,13 +102,8 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <ScrollView
-        style={{
-          flex: 1,
-          backgroundColor: "white",
-          paddingHorizontal: SIZES.md,
-        }}
-      >
+
+      <ScrollView style={styles.scrollContainer}>
         <View style={styles.seeAllContainer}>
           <Text style={TYPOGRAPHY.h2}>Categories</Text>
           <TouchableOpacity activeOpacity={0.5} style={{ padding: 4 }}>
@@ -117,10 +113,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
 
         <View style={styles.iconsRow}>
           <Category
-            style={{
-              borderBottomEndRadius: 0,
-              borderBottomStartRadius: 0,
-            }}
+            style={styles.topIconRow}
             badge="New"
             text="Restaurant"
             icon={<RestaurantIcon />}
@@ -128,20 +121,14 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
           />
 
           <Category
-            style={{
-              borderBottomEndRadius: 0,
-              borderBottomStartRadius: 0,
-            }}
+            style={styles.topIconRow}
             text="Fashion"
             icon={<FashionIcon />}
             onPress={() => {}}
           />
 
           <Category
-            style={{
-              borderBottomEndRadius: 0,
-              borderBottomStartRadius: 0,
-            }}
+            style={styles.topIconRow}
             text="Auto"
             icon={<CarIcon />}
             onPress={() => {}}
@@ -150,20 +137,14 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
 
         <View style={styles.iconsRow}>
           <Category
-            style={{
-              borderTopEndRadius: 0,
-              borderTopStartRadius: 0,
-            }}
+            style={styles.bottomIconRow}
             text="Technology"
             icon={<TechnologyIcon />}
             onPress={() => {}}
           />
 
           <Category
-            style={{
-              borderTopEndRadius: 0,
-              borderTopStartRadius: 0,
-            }}
+            style={styles.bottomIconRow}
             badge="New"
             text="Travel"
             icon={<TravelIcon />}
@@ -171,10 +152,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
           />
 
           <Category
-            style={{
-              borderTopEndRadius: 0,
-              borderTopStartRadius: 0,
-            }}
+            style={styles.bottomIconRow}
             text="Entertainment"
             icon={<EntertainmentIcon />}
             onPress={() => {}}
@@ -197,14 +175,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
             "https://source.unsplash.com/random/?man,computer",
           ]}
           renderItem={({ item }) => (
-            <TouchableOpacity
-              style={{
-                borderRadius: SIZES.xxs,
-                overflow: "hidden",
-                marginEnd: SIZES.xs,
-              }}
-              activeOpacity={0.8}
-            >
+            <TouchableOpacity style={styles.offerContainer} activeOpacity={0.8}>
               <Image
                 source={{
                   uri: item,
@@ -229,6 +200,9 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }) => {
             canRate={false}
             item={item}
             width={width}
+            onPress={() =>
+              navigation?.navigate("BusinessInfoScreen", { business: item })
+            }
           />
         ))}
       </ScrollView>
@@ -287,6 +261,11 @@ const styles = StyleSheet.create({
     borderColor: "#B0B0B0",
     marginTop: 38,
   },
+  scrollContainer: {
+    flex: 1,
+    backgroundColor: "white",
+    paddingHorizontal: SIZES.md,
+  },
   seeAllContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -296,6 +275,19 @@ const styles = StyleSheet.create({
   iconsRow: {
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  topIconRow: {
+    borderBottomEndRadius: 0,
+    borderBottomStartRadius: 0,
+  },
+  bottomIconRow: {
+    borderTopEndRadius: 0,
+    borderTopStartRadius: 0,
+  },
+  offerContainer: {
+    borderRadius: SIZES.xxs,
+    overflow: "hidden",
+    marginEnd: SIZES.xs,
   },
   fabBtnStyle: {
     position: "absolute",

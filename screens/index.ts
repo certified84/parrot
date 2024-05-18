@@ -2,5 +2,12 @@ import Dashboard from "./Dashboard";
 import HomeScreen from "./Home";
 import NotificationsScreen from "./Notifications";
 import SearchScreen from "./Search";
+import BusinessInfoScreen from "./BusinessInfo";
 
-export { Dashboard, HomeScreen, NotificationsScreen, SearchScreen };
+export {
+  Dashboard,
+  HomeScreen,
+  NotificationsScreen,
+  SearchScreen,
+  BusinessInfoScreen,
+};

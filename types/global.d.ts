@@ -14,6 +14,8 @@ declare global {
     ProfileScreen;
     ReviewsScreen;
     OffersScreen;
+    BusinessInfoScreen: { business: IBusiness };
+    ReviewScreen: { review: IReview };
 
     BookmarksScreen: { bookmarks: string[] };
     ServicesScreen: { category?: Category; bookmarks?: string[] };
@@ -36,5 +38,20 @@ declare global {
     reviewCount: number;
     businessType: string;
     image: string;
+    info: string;
+  }
+
+  interface IReview {
+    id: string;
+    name: string;
+    business?: string;
+    time: string;
+    rating: number;
+    review: string;
+    profileImage: string;
+    images: string[];
+    likes: number;
+    dislikes: number;
+    comments: number;
   }
 }

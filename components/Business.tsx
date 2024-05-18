@@ -8,12 +8,13 @@ type Props = {
   item: IBusiness;
   width: number;
   canRate: boolean;
+  onPress: () => void
 };
 
-const BusinessComponent: React.FC<Props> = ({ item, width, canRate }) => {
+const BusinessComponent: React.FC<Props> = ({ item, width, canRate, onPress }) => {
   const [rating, setRating] = useState(item.rating);
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.8}>
+    <TouchableOpacity style={styles.container} activeOpacity={0.8} onPress={onPress}>
       <Image
         source={{
           uri: item.image,
